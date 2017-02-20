@@ -47,7 +47,7 @@ export interface MouseLocation {
         <!-- Imperative context menu -->
         <li *ngFor="let link of links" [class.disabled]="isDisabled(link)">
           <a href [class.dropdown-item]="useBootstrap4" [class.disabled]="useBootstrap4 && isDisabled(link)"
-            (click)="execute(link, $event); $event.preventDefault(); $event.stopPropagation();"
+            (click)="execute(link, $event); $event.preventDefault();"
             innerHTML="{{link.html ? link.html(item) : ''}}"></a>
         </li>
         <!-- Declarative context menu -->
@@ -56,7 +56,7 @@ export interface MouseLocation {
             [attr.role]="menuItem.divider ? 'separator' : undefined">
           <a *ngIf="!menuItem.divider && !menuItem.passive" href [class.dropdown-item]="useBootstrap4"
             [class.disabled]="useBootstrap4 && !isMenuItemEnabled(menuItem)"
-            (click)="menuItem.triggerExecute(item, $event); $event.preventDefault(); $event.stopPropagation();">
+            (click)="menuItem.triggerExecute(item, $event); $event.preventDefault();">
             <template [ngTemplateOutlet]="menuItem.template" [ngOutletContext]="{ $implicit: item }"></template>
           </a>
 
