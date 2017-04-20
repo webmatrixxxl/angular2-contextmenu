@@ -209,7 +209,7 @@ export class ContextMenuComponent implements AfterContentInit {
     const offsetParent: HTMLElement = this.elementRef.nativeElement.offsetParent;
     if (offsetParent && offsetParent.tagName !== 'BODY') {
       const position = event.view.getComputedStyle(offsetParent).position;
-      if (position !== 'absolute' && position !== 'fixed') {
+      if (position !== 'absolute' && position !== 'fixed' && this.locationCss.position !== 'fixed') {
         const { left, top } = offsetParent.getBoundingClientRect();
         adjustX = -left;
         adjustY = -top;
