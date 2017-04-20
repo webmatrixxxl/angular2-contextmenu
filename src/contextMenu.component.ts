@@ -54,11 +54,11 @@ export interface MouseLocation {
         <li *ngFor="let menuItem of visibleMenuItems" [class.disabled]="!isMenuItemEnabled(menuItem)"
             [class.divider]="menuItem.divider" [class.dropdown-divider]="useBootstrap4 && menuItem.divider"
             [attr.role]="menuItem.divider ? 'separator' : undefined">
-          <a *ngIf="!menuItem.divider && !menuItem.passive" href [class.dropdown-item]="useBootstrap4"
+          <div *ngIf="!menuItem.divider && !menuItem.passive" href [class.dropdown-item]="useBootstrap4"
             [class.disabled]="useBootstrap4 && !isMenuItemEnabled(menuItem)"
             (click)="menuItem.triggerExecute(item, $event); $event.preventDefault();">
             <template [ngTemplateOutlet]="menuItem.template" [ngOutletContext]="{ $implicit: item }"></template>
-          </a>
+          </div>
 
           <span (click)="stopEvent($event)" (contextmenu)="stopEvent($event)" class="passive"
                 *ngIf="!menuItem.divider && menuItem.passive" [class.dropdown-item]="useBootstrap4"
